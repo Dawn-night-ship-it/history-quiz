@@ -17,8 +17,9 @@
   --shadow-red:0 4px 20px rgba(139,26,26,.12);
   --gradient-red:linear-gradient(135deg,#8B1A1A 0%,#5C1010 100%);
   --gradient-gold:linear-gradient(135deg,#C9A227 0%,#8B7723 100%);
-  --gradient-bg:linear-gradient(170deg,#FDF8F3 0%,#F9F0E8 30%,#F5E8E0 60%,#F0DDDD 100%);
+  --gradient-bg:linear-gradient(170deg,#FDF8F3 0%,#F9F0E8 25%,#F5E0DC 50%,#F0D5D5 75%,#EBCFCF 100%);
   --gradient-card:linear-gradient(180deg,#FFFEFC 0%,#FDFAF6 100%);
+  --youth-coral:#FF6B6B;--youth-teal:#4ECDC4;--youth-mint:#51CF66;--youth-sky:#56C5FF;
   --serif:'STSong','SimSun','Songti SC','Noto Serif SC',serif;
   --sans:'STSong','SimSun','Songti SC','Noto Serif SC',serif;
   --title:'STKaiti','KaiTi','STZhongsong','Noto Serif SC',serif;
@@ -36,9 +37,10 @@ body{
 body::before{
   content:'';position:fixed;top:0;left:0;right:0;bottom:0;
   background-image:
-    radial-gradient(ellipse at 15% 10%,rgba(139,26,26,.06) 0%,transparent 50%),
-    radial-gradient(ellipse at 85% 90%,rgba(201,162,39,.04) 0%,transparent 50%),
-    radial-gradient(circle at 50% 50%,rgba(139,26,26,.02) 0%,transparent 70%);
+    radial-gradient(ellipse at 15% 10%,rgba(139,26,26,.07) 0%,transparent 50%),
+    radial-gradient(ellipse at 85% 90%,rgba(201,162,39,.05) 0%,transparent 50%),
+    radial-gradient(circle at 50% 50%,rgba(139,26,26,.02) 0%,transparent 70%),
+    radial-gradient(circle at 70% 20%,rgba(255,107,107,.04) 0%,transparent 40%);
   pointer-events:none;z-index:0;
 }
 /* 古典纹理底纹 */
@@ -119,12 +121,12 @@ body::after{
 .start-rules li::before{content:"\25CF";color:var(--gold);font-size:.55rem;margin-top:.45rem;flex-shrink:0}
 .btn-start{
   display:block;width:100%;padding:.95rem;
-  background:var(--gradient-red);
-  color:var(--gold-light);font-size:1.05rem;font-weight:700;border:none;
+  background:linear-gradient(135deg,#8B1A1A 0%,#C73E3E 50%,#FF6B6B 100%);
+  color:#fff;font-size:1.05rem;font-weight:700;border:none;
   border-radius:50px;cursor:pointer;letter-spacing:.15em;
-  box-shadow:var(--shadow-red);transition:all .2s;font-family:var(--serif);
+  box-shadow:0 4px 16px rgba(255,107,107,.3),0 2px 8px rgba(139,26,26,.2);transition:all .2s;font-family:var(--serif);
   position:relative;overflow:hidden;
-  border:1px solid rgba(201,162,39,.3);
+  border:1px solid rgba(255,255,255,.15);
 }
 .btn-start::after{
   content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
@@ -243,11 +245,17 @@ body::after{
 .res-prize__label{font-size:.7rem;font-weight:700;color:var(--red);letter-spacing:.15em;margin-bottom:.3rem;font-family:var(--serif)}
 .res-prize__text{font-size:.82rem;color:var(--ink-2);font-family:var(--serif)}
 .res-cta{
-  background:var(--ink);color:#fff;border-radius:10px;
-  padding:1.2rem;margin-bottom:1rem;
+  background:linear-gradient(135deg,#8B1A1A 0%,#5C1010 100%);color:#fff;border-radius:12px;
+  padding:1.3rem;margin-bottom:1rem;position:relative;overflow:hidden;
+  border:1px solid rgba(201,162,39,.2);
 }
-.res-cta h3{font-size:.95rem;margin-bottom:.3rem;color:var(--gold-light);font-family:var(--title);letter-spacing:.05em}
-.res-cta p{font-size:.78rem;color:rgba(255,255,255,.75);line-height:1.7;font-family:var(--serif)}
+.res-cta::before{
+  content:'';position:absolute;top:0;right:0;width:120px;height:120px;
+  background:radial-gradient(circle,rgba(255,107,107,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.res-cta h3{font-size:.95rem;margin-bottom:.4rem;color:var(--gold-light);font-family:var(--title);letter-spacing:.05em;position:relative;z-index:1}
+.res-cta p{font-size:.78rem;color:rgba(255,255,255,.8);line-height:1.8;font-family:var(--serif);position:relative;z-index:1}
 .btn-restart{
   display:block;width:100%;padding:.8rem;
   background:transparent;color:var(--red);font-size:.9rem;
@@ -319,7 +327,7 @@ body::after{
     <h1 class="start-title">史海拾贝</h1>
     <p class="start-sub">党史国史知识挑战</p>
     <div class="start-divider"></div>
-    <p class="start-desc">从建党初心到强国征程，从革命烽火到复兴伟业——五道随机题目，检验你的党史国史素养。</p>
+    <p class="start-desc">从建党初心到强国征程，从革命烽火到复兴伟业——十道随机题目，检验你的党史国史素养。青春正当时，学史向未来！</p>
     <div class="start-rules">
       <div class="start-rules-title">游戏规则</div>
       <ul>
@@ -368,13 +376,9 @@ body::after{
         <div class="res-stat"><div class="res-stat__num" id="res-epoch"></div><div class="res-stat__label">历史段位</div></div>
       </div>
     </div>
-    <div class="res-prize">
-      <div class="res-prize__label">纳新奖品</div>
-      <div class="res-prize__text" id="res-prize-text"></div>
-    </div>
     <div class="res-cta">
       <h3>加入学生模拟政协协会</h3>
-      <p>以史为鉴，知古鉴今。协会带你走进真实的社会调研与模拟提案实践，期待你的加入！</p>
+      <p>以史为鉴，知古鉴今。在这里，你可以参与社会调研、模拟提案、时事辩论——青春不止于课堂，行动从现在开始！</p>
     </div>
     <button class="btn-restart" onclick="startGame()">再来一局</button>
   </div>
@@ -727,22 +731,18 @@ function showResults(){
   document.getElementById('res-right').textContent = state.correct+'/'+TOTAL;
   document.getElementById('res-time').textContent = elapsed+'\u2033';
 
-  var medal,title,sub,prize,epoch;
+  var medal,title,sub,epoch;
   if(acc >= 80){
-    medal='\u4f18';title='\u535a\u53e4\u901a\u4eca';sub='\u4f60\u7684\u5386\u53f2\u7d20\u517b\u4ee4\u4eba\u9492\u4f69\uff01';
-    prize='\u4e00\u7b49\u5956\uff1a\u7cbe\u7f8e\u5b9a\u5236\u6587\u521b\u793c\u5305 + \u534f\u4f1a\u4f18\u5148\u5165\u4f1a\u8d44\u683c';
+    medal='\u4f18';title='\u535a\u53e4\u901a\u4eca';sub='\u4f60\u7684\u5386\u53f2\u7d20\u517b\u4ee4\u4eba\u9492\u4f69\uff01\u9752\u6625\u6b63\u5f53\u65f6\uff0c\u7ee7\u7eed\u524d\u884c\uff01';
     epoch='\u5927\u5e08';
   } else if(acc >= 60){
-    medal='\u826f';title='\u5b66\u5bcc\u4e94\u8f66';sub='\u624e\u5b9e\u7684\u5386\u53f2\u529f\u5e95\uff0c\u7ee7\u7eed\u52a0\u6cb9\uff01';
-    prize='\u4e8c\u7b49\u5956\uff1a\u534f\u4f1a\u5b9a\u5236\u7b14\u8bb0\u672c + \u7b7e\u5b57\u7b14';
+    medal='\u826f';title='\u5b66\u5bcc\u4e94\u8f66';sub='\u624e\u5b9e\u7684\u5386\u53f2\u529f\u5e95\uff0c\u7ee7\u7eed\u52aa\u529b\uff01';
     epoch='\u8fbe\u4eba';
   } else if(acc >= 40){
-    medal='\u4e2d';title='\u521d\u7a7a\u95e8\u5f84';sub='\u57fa\u7840\u4e0d\u9519\uff0c\u6765\u534f\u4f1a\u4e00\u8d77\u8fdb\u6b65\uff01';
-    prize='\u4e09\u7b49\u5956\uff1a\u5b9a\u5236\u4e66\u7b7e + \u7eaa\u5ff5\u5fbd\u7ae0';
+    medal='\u4e2d';title='\u521d\u7a7a\u95e8\u5f84';sub='\u5df2\u5165\u95e8\uff0c\u6765\u534f\u4f1a\u4e00\u8d77\u7cbe\u8fdb\uff01';
     epoch='\u5b66\u5f92';
   } else {
-    medal='\u52c9';title='\u5b66\u6d77\u65e0\u6daf';sub='\u5386\u53f2\u7684\u753b\u5377\u624d\u521a\u521a\u5c55\u5f00\uff0c\u6b22\u8fce\u6765\u534f\u4f1a\u5b66\u4e60\uff01';
-    prize='\u53c2\u4e0e\u5956\uff1a\u534f\u4f1a\u7eaa\u5ff5\u8d34\u7eb8 + \u62db\u65b0\u624b\u518c';
+    medal='\u52c9';title='\u5b66\u6d77\u65e0\u6daf';sub='\u5386\u53f2\u7684\u753b\u5377\u624d\u521a\u521a\u5c55\u5f00\uff0c\u6765\u534f\u4f1a\u4e00\u8d77\u63a2\u7d22\uff01';
     epoch='\u65b0\u624b';
   }
   var me = document.getElementById('res-medal');
@@ -750,7 +750,6 @@ function showResults(){
   me.className = 'res-medal res-medal--'+(acc>=80?'gold':acc>=60?'silver':acc>=40?'bronze':'part');
   document.getElementById('res-title').textContent = title;
   document.getElementById('res-sub').textContent = sub;
-  document.getElementById('res-prize-text').textContent = prize;
   document.getElementById('res-epoch').textContent = epoch;
 }
 
